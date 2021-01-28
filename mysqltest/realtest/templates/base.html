@@ -1,0 +1,127 @@
+<!doctype html>
+{% load static %}
+<html lang="euc-kr" >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>{% block title %}{% endblock %}</title>
+      <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .bgcolors{
+      background-color: black;
+      }
+     .fontcolors{
+     color:white;
+     }
+    a:hover{ color:red;
+    }
+    </style>
+    <!-- Custom styles for this template -->
+  </head>
+
+  <body >
+<header class="site-header sticky-top py-1 " >
+    <div class="bgcolors" style="width:60%; margin:0 auto; height:50px; line-height:50px; vertical-align:middle; " >
+  <nav class="container d-flex flex-column flex-md-row justify-content-between" >
+    <a class="py-2" href="#" aria-label="Product">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+    </a>
+    <a class="py-2 d-none d-md-inline-block fontcolors" href="{% url 'productshow' %}">Tour</a>
+    <a class="py-2 d-none d-md-inline-block fontcolors" href="{% url 'productshow' %}">Product</a>
+    <a class="py-2 d-none d-md-inline-block fontcolors" href="{% url 'index' %}">Features</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+      &nbsp&nbsp&nbsp
+   <span class="py-2 d-none d-md-inline-block">{% if user.is_authenticated %}
+  <span style="color:white;">User: {{ user.get_username }}</span>
+     <a href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+   {% else %}
+    <a href="{% url 'login'%}?next={{request.path}}">Login</a>
+   {% endif %}</span>
+  </nav>
+        </div>
+</header>
+
+
+  <div  style="margin:0 auto; width:60%; text-align:center; height:200px; background-color:#CCCCCC; " >
+    이미지 들어갈 부분
+ </div >
+<div>
+  <main style="padding-bottom: 120px;">
+  {% block content %}{% endblock %}
+    </main>
+</div>
+
+<br><br><br>
+
+<footer style="width:100%; height:180px; position:fixed; bottom:0; background:white;">
+
+  <div class="row" style="width:60%; height:180px; background:black; text-align:center; margin:0 auto; color: white;">
+    <div class="col-12 col-md">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+      <small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Cool stuff</a></li>
+        <li><a class="link-secondary" href="#">Random feature</a></li>
+        <li><a class="link-secondary" href="#">Team feature</a></li>
+        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+        <li><a class="link-secondary" href="#">Another one</a></li>
+        <li><a class="link-secondary" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Resource name</a></li>
+        <li><a class="link-secondary" href="#">Resource</a></li>
+        <li><a class="link-secondary" href="#">Another resource</a></li>
+        <li><a class="link-secondary" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Business</a></li>
+        <li><a class="link-secondary" href="#">Education</a></li>
+        <li><a class="link-secondary" href="#">Government</a></li>
+        <li><a class="link-secondary" href="#">Gaming</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Team</a></li>
+        <li><a class="link-secondary" href="#">Locations</a></li>
+        <li><a class="link-secondary" href="#">Privacy</a></li>
+        <li><a class="link-secondary" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+
+</footer>
+</body>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}" ></script>
+
+</html>

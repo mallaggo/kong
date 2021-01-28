@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}<title>메인 페이지 입니다.</title> {% endblock %}
+
+{% block content %}
+<div class="col-md-8 offset-md-2">
+    <h1>Index</h1>
+    <hr>
+    {% for line in tests %}
+    <a href="{% url 'showdetail' line.pk %}"><b>{{ line.subject }}</b></a> &nbsp&nbsp
+    <img src="{{ line.image.url }}" height="100" width="100"> &nbsp&nbsp {{ line.summary }} &nbsp&nbsp {{ line.upload_date }} &nbsp&nbsp {{ line.acount }}
+    <br>
+    {% endfor %}
+</div>
+{% endblock %}
+
+

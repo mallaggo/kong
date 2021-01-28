@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}<title>메인 페이지 입니다.</title>{% endblock %}
+
+{% block content %}
+<div style="margin:0 auto; text-align:center">
+<b class="col-md-8 offset-md-2">
+    <h1>제품 목록</h1></b>
+    <hr>
+
+    {% for line in page_obj %}
+    {{ line.serial_number }} &nbsp&nbsp
+    <b><a href="{% url 'product' line.pk %}">{{ line.name }} </a></b> &nbsp&nbsp {{ line.price }} &nbsp&nbsp {{ line.make_date }}
+    <br>
+    <br>
+    {% endfor %}
+    <form action="{% url 'product_write' %}" >
+        {% csrf_token %}
+<input type="submit" value="글쓰기">
+    </form>
+</div>
+
+<div style="margin:0 auto; text-align:center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

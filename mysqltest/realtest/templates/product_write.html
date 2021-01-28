@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}<title>게시판 글쓰기</title>{% endblock %}
+{% block content %}
+<div style="text-align:center;">
+    <form action="" method="post" enctype="multipart/form-data"> <!--entype이 없으면 이미지 업로드가 안된다. -->
+        {% csrf_token %}
+
+    {{ form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ form.serial_number.errors }}
+    <label >제품코드:</label>
+    {{ form.serial_number }}
+</div>
+<div class="fieldWrapper">
+    {{ form.name.errors }}
+    <label >제품명:</label>
+    {{ form.name }}
+</div>
+<div class="fieldWrapper">
+    {{ form.image.errors }}
+    <label >이미지:</label>
+    {{ form.image }}
+</div>
+<div class="fieldWrapper">
+    {{ form.content.errors }}
+    <label>소개:</label>
+    {{ form.content }}
+</div>
+<div class="fieldWrapper">
+    {{ form.price.errors }}
+    <label>가격:</label>
+    {{ form.price }}
+</div>
+<div class="fieldWrapper">
+    {{ form.categories.errors }}
+    <label>카테고리:</label>
+    {{ form.categories }}
+</div>
+<input type="submit" value="저장">
+    </form>
+</div>
+
+{% endblock %}
